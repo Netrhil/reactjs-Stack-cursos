@@ -7,22 +7,17 @@ import Modal from '../../widgets/components/modal';
 import HandleError from '../../error/containers/handle-error';
 import VideoPlayer from '../../player/containers/video-player';
 import { connect } from 'react-redux';
+import * as actions from '../../actions/index';
 import { List as list } from 'immutable';
+import { bindActionCreators } from 'redux';
 
 class Home extends Component {
   handleCloseModal = (event) => {
-    this.props.dispatch({
-      type: 'CLOSE_MODAL'
-    });
+    this.props.actions.closeModal();
   }
 
   handleOpenModal = (id) => {
-    this.props.dispatch({
-      type: "OPEN_MODAL",
-      payload: {
-        mediaId: id
-      }
-    });
+    this.props.actions.openModal(id);
   }
 
   render() {
@@ -35,6 +30,7 @@ class Home extends Component {
             categories={this.props.categories}
             search={this.props.search}
             handleOpenModal={this.handleOpenModal}
+            isLoading={this.props.isLoading}
           />
           {
             this.props.modal.get('visibility') &&
@@ -70,9 +66,16 @@ function mapStateToProps(state, props) {
   return {
     categories: categories,
     search: searchResults,
-    modal: state.get('modal')
+    modal: state.get('modal'),
+    isLoading: state.get('isLoading').get('active')
   }
 
 }
 
-export default connect(mapStateToProps)(Home)
+function mapDispatchToProps (dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
