@@ -8,7 +8,13 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {
+    Platform,
+    StyleSheet,
+    Text
+   } from 'react-native';
+
+import moduleName, { Home } from './src/screens/containers/home';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -19,13 +25,19 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+   
   render() {
+
+    let pic = {
+      uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
+    };
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <Home>
+        <Text> header </Text>
+        <Text> buscador </Text>
+        <Text> categorias </Text>
+        <Text> sugerencias </Text>
+      </Home>
     );
   }
 }
@@ -35,7 +47,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'red',
   },
   welcome: {
     fontSize: 20,
