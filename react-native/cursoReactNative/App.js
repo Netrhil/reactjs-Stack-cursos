@@ -16,6 +16,7 @@ import {
 
 import Home from './src/screens/containers/home';
 import Header from './src/sections/components/header';
+import SuggestionList from './src/videos/containers/suggestion-list';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -38,7 +39,7 @@ export default class App extends Component<Props> {
         </Header>
         <Text> buscador 2 </Text>
         <Text> categorias </Text>
-        <Text> sugerencias </Text>
+        <SuggestionList/>
       </Home>
     );
   }
