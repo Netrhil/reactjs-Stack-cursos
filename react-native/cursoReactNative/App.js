@@ -14,7 +14,8 @@ import {
     Text
    } from 'react-native';
 
-import moduleName, { Home } from './src/screens/containers/home';
+import Home from './src/screens/containers/home';
+import Header from './src/sections/components/header';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -33,8 +34,9 @@ export default class App extends Component<Props> {
     };
     return (
       <Home>
-        <Text> header </Text>
-        <Text> buscador </Text>
+        <Header>
+        </Header>
+        <Text> buscador 2 </Text>
         <Text> categorias </Text>
         <Text> sugerencias </Text>
       </Home>
