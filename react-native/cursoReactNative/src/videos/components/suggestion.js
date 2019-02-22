@@ -7,21 +7,25 @@ import {
 } from 'react-native';
 
 export default function Suggestion(props) {
+    console.log("uri ", props.medium_cover_image );
+    
     return(
         <View style={styles.container}>
             <View style={styles.left}>
                 <Image
-                    style={styles.container}
-                    source={require('../../../assets/logo.png')}
+                    style={styles.cover}
+                    source={{
+                        uri: props.medium_cover_image
+                      }}
                 />
                 <View style={styles.genre}>
-                    <Text style={styles.genreText}> Accion </Text>
+                    <Text style={styles.genreText}> {props.genres[0]} </Text>
                 </View>
             </View >
             <View style={styles.right}>
-                <Text style={styles.title}> Avengers </Text>
-                <Text style={styles.year}> Avengers </Text>
-                <Text style={styles.rating}> Avengers </Text>
+                <Text style={styles.title}> {props.title} </Text>
+                <Text style={styles.year}> {props.year} </Text>
+                <Text style={styles.rating}> {props.rating} </Text>
             </View>
 
         </View>
@@ -29,36 +33,36 @@ export default function Suggestion(props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-  },
-  genre: {
+    container: {
+      flexDirection: 'row',
+    },
+    genre: {
       position: 'absolute',
       left: 0,
       top: 0,
       backgroundColor: 'black',
       paddingVertical: 5,
-      paddingHorizontal: 7
-  },
-  genreText: {
+      paddingHorizontal: 7,
+    },
+    genreText: {
       color: 'white',
       fontSize: 11,
-
-  },
-  cover: {
+  
+    },
+    cover: {
       height: 150,
       width: 100,
       resizeMode: 'contain'
-  },
-  right: {
+    },
+    right: {
       paddingLeft: 10,
-      justifyContent: 'space-between'
-  },
-  title: {
+      justifyContent: 'space-between',
+    },
+    title: {
       fontSize: 18,
       color: '#44546b'
-  },
-  year: {
+    },
+    year: {
       backgroundColor: '#70b124',
       paddingVertical: 4,
       paddingHorizontal: 6,
@@ -67,10 +71,12 @@ const styles = StyleSheet.create({
       borderRadius: 5,
       overflow: 'hidden',
       alignSelf: 'flex-start'
-  },
-  rating: {
+    },
+    rating: {
       color: '#6b6b6b',
       fontSize: 14,
       fontWeight: 'bold',
-  },
-})
+    }
+  
+  });
+  
