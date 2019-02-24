@@ -21,6 +21,8 @@ import SuggestionList from './src/videos/containers/suggestion-list';
 import CategoryList from './src/videos/containers/category-list';
 import API from "./src/utils/api";
 import Player from "./src/player/containers/player";
+import { Provider } from 'react-redux';
+import store from './src/store';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -54,22 +56,23 @@ export default class App extends Component<Props> {
       uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
     };
     return (
-      <Home>
-        <Header/>
+      <Provider store={store}>
+        <Home>
+          <Header/>
 
-        <Player/> 
-        
-        <Text> buscador 2 </Text>
-        <Text> categorias </Text>
-        <CategoryList
-          list={this.state.categoryList}
-        />
-        
-        <SuggestionList
-          list={this.state.suggestionList}
-        />
-
-      </Home>
+          <Player/> 
+          
+          <Text> buscador 2 </Text>
+          <Text> categorias </Text>
+          <CategoryList
+            list={this.state.categoryList}
+          />
+          
+          <SuggestionList
+            list={this.state.suggestionList}
+          />
+        </Home>
+      </Provider>
     );
   }
 }
