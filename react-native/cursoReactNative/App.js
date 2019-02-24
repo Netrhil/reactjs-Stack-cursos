@@ -11,7 +11,8 @@ import React, {Component} from 'react';
 import {
     Platform,
     StyleSheet,
-    Text
+    Text,
+    View
    } from 'react-native';
 
 import Home from './src/screens/containers/home';
@@ -19,6 +20,7 @@ import Header from './src/sections/components/header';
 import SuggestionList from './src/videos/containers/suggestion-list';
 import CategoryList from './src/videos/containers/category-list';
 import API from "./src/utils/api";
+import Player from "./src/player/containers/player";
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -53,8 +55,10 @@ export default class App extends Component<Props> {
     };
     return (
       <Home>
-        <Header>
-        </Header>
+        <Header/>
+
+        <Player/> 
+        
         <Text> buscador 2 </Text>
         <Text> categorias </Text>
         <CategoryList
