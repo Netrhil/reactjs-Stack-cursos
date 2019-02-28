@@ -3,13 +3,16 @@ import {
     View,
     Image,
     Text,
-    StyleSheet
+    StyleSheet,
+    TouchableOpacity
 } from 'react-native';
 
 export default function Suggestion(props) {
     console.log("uri ", props.medium_cover_image );
-    
     return(
+      <TouchableOpacity
+        onPress={props.onPress}
+      >
         <View style={styles.container}>
             <View style={styles.left}>
                 <Image
@@ -27,8 +30,8 @@ export default function Suggestion(props) {
                 <Text style={styles.year}> {props.year} </Text>
                 <Text style={styles.rating}> {props.rating} </Text>
             </View>
-
         </View>
+      </TouchableOpacity>
     );
 }
 

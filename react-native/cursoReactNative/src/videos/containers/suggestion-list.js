@@ -7,14 +7,30 @@ import {
  import Empty from '../components/empty';
  import Separator from '../components/vertical-separator';
  import Suggestion from '../components/suggestion';
+ import { connect } from 'react-redux';
 
-export default class SuggestionList extends Component {
+class SuggestionList extends Component {
   keyExtractor = (item) => item.id.toString();
+  
   renderEmpty = () => <Empty text="No hay Elementos en la lista"/>;
+  
   itemSeparator = () => <Separator/>;
+  
+  viewMovie = (item) => {
+    this.props.dispatch({
+      type: 'SET_SELECTED_MOVIE',
+      payload: {
+        movie: item
+      }
+    })
+  }
+  
   renderItem = ({item}) => {
     return(
-      <Suggestion {...item}/>
+      <Suggestion 
+        {...item}
+        onPress={()=>{this.viewMovie(item)}}
+        />
     )
   }
 
@@ -34,4 +50,12 @@ export default class SuggestionList extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    list: state.suggestionList
+  }
+}
+
+export default connect(mapStateToProps)(SuggestionList);
 

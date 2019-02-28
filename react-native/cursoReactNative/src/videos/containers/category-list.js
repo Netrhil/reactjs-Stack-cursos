@@ -39,7 +39,11 @@ import {
 }
 
 function mapStateToProps(state) {
-  return state;
+  console.log(state.categoryList);
+  
+  return {
+    list: state.categoryList
+  }
 }
 
 export default connect(mapStateToProps)(CategoryList);
