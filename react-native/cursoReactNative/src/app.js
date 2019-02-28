@@ -7,6 +7,7 @@ import Header from './sections/components/header';
 import SuggestionList from './videos/containers/suggestion-list';
 import CategoryList from './videos/containers/category-list';
 import Movie from '../src/screens/containers/movie';
+import Search from '../src/sections/containers/search';
 import API from "../src/utils/api";
 import { connect } from 'react-redux'
 
@@ -14,10 +15,6 @@ class AppLayout extends Component {
     async componentDidMount () {
         const suggestionList = await API.getSuggestion(10);
         const categoryList = await API.getMovies();
-        /* this.setState({
-            suggestionList: movies,
-            categoryList : categories
-        }); */
 
         this.props.dispatch({
             type: "SET_SUGGESTION_LIST",
@@ -43,8 +40,7 @@ class AppLayout extends Component {
     return (
         <Home>
             <Header/>
-            <Text> buscador 2 </Text>
-            <Text> categorias </Text>
+            <Search/>
             <CategoryList/>
             <SuggestionList/>
         </Home>
